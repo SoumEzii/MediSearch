@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Services - Medi Search</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="emergency-page">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/placeholder.svg?height=40&width=40" alt="Medi Search Logo">
+                <h1>Medi Search</h1>
+            </div>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="patient.html">Book Appointment</a></li>
+                    <li><a href="patient.html#queue-status">Queue Status</a></li>
+                    <li><a href="emergency.html" class="emergency-link active">Emergency</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-language" id="languageToggle">
+                    <span class="current-lang">EN</span>
+                    <i class="fas fa-globe"></i>
+                </button>
+                <a href="patient.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="emergency-main">
+        <div class="container">
+            <div class="emergency-header">
+                <h2>Emergency Services</h2>
+                <p>For immediate medical assistance, please call the emergency helpline: <strong>108</strong></p>
+            </div>
+
+            <div class="emergency-content">
+                <div class="emergency-form-container">
+                    <h3>Report Emergency Case</h3>
+                    <form id="emergencyForm" class="emergency-form">
+                        <div class="form-group">
+                            <label for="patient-name">Patient Name</label>
+                            <input type="text" id="patient-name" name="patient-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-number">Contact Number</label>
+                            <input type="tel" id="contact-number" name="contact-number" pattern="[0-9]{10}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergency-type">Emergency Type</label>
+                            <select id="emergency-type" name="emergency-type" required>
+                                <option value="">Select Emergency Type</option>
+                                <option value="cardiac">Cardiac Emergency</option>
+                                <option value="accident">Accident/Trauma</option>
+                                <option value="stroke">Stroke</option>
+                                <option value="breathing">Breathing Difficulty</option>
+                                <option value="bleeding">Severe Bleeding</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="symptoms">Symptoms/Description</label>
+                            <textarea id="symptoms" name="symptoms" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" required>
+                            <button type="button" class="btn btn-outline btn-sm location-btn">
+                                <i class="fas fa-map-marker-alt"></i> Use Current Location
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <label>Need Ambulance?</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="ambulance" value="yes" checked> Yes
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="ambulance" value="no"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-alert btn-large">Submit Emergency Request</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="emergency-resources">
+                    <h3>Emergency Resource Availability</h3>
+                    <div class="resource-cards">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-ambulance"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>Ambulances</h4>
+                                <div class="resource-availability available">
+                                    <span class="availability-count">5</span> Available
+                                </div>
+                                <p>Estimated arrival time: 10-15 minutes</p>
+                            </div>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-procedures"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>ICU Beds</h4>
+                                <div class="resource-availability limited">
+                                    <span class="availability-count">3</span> Available
+                                </div>
+                                <p>At AIIMS Delhi and Safdarjung Hospital</p>
+                            </div>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>Cardiac Emergency</h4>
+                                <div class="resource-availability available">
+                                    <span class="availability-status">Available</span>
+                                </div>
+                                <p>Nearest center: AIIMS Delhi (3.5 km)</p>
+                            </div>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>Stroke Center</h4>
+                                <div class="resource-availability available">
+                                    <span class="availability-status">Available</span>
+                                </div>
+                                <p>Nearest center: Safdarjung Hospital (5 km)</p>
+                            </div>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>Emergency Doctors</h4>
+                                <div class="resource-availability available">
+                                    <span class="availability-status">Available</span>
+                                </div>
+                                <p>On call at all major hospitals</p>
+                            </div>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div class="resource-details">
+                                <h4>Trauma Centers</h4>
+                                <div class="resource-availability limited">
+                                    <span class="availability-count">2</span> Available
+                                </div>
+                                <p>At AIIMS Delhi and LNJP Hospital</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emergency-hospitals">
+                <h3>Nearby Emergency Hospitals</h3>
+                <div class="hospital-cards">
+                    <div class="hospital-card">
+                        <div class="hospital-info">
+                            <h4>AIIMS Delhi</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> Ansari Nagar, New Delhi</p>
+                            <p><i class="fas fa-phone"></i> 011-2658-8500</p>
+                            <p><i class="fas fa-road"></i> 3.5 km away</p>
+                        </div>
+                        <div class="hospital-status">
+                            <div class="status-item">
+                                <span class="status-label">Emergency:</span>
+                                <span class="status-value available">Open</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">Wait Time:</span>
+                                <span class="status-value">~20 min</span>
+                            </div>
+                        </div>
+                        <div class="hospital-actions">
+                            <button class="btn btn-primary btn-sm">Get Directions</button>
+                            <button class="btn btn-outline btn-sm">Call</button>
+                        </div>
+                    </div>
+                    <div class="hospital-card">
+                        <div class="hospital-info">
+                            <h4>Safdarjung Hospital</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> Ansari Nagar, New Delhi</p>
+                            <p><i class="fas fa-phone"></i> 011-2673-0000</p>
+                            <p><i class="fas fa-road"></i> 5 km away</p>
+                        </div>
+                        <div class="hospital-status">
+                            <div class="status-item">
+                                <span class="status-label">Emergency:</span>
+                                <span class="status-value available">Open</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">Wait Time:</span>
+                                <span class="status-value">~15 min</span>
+                            </div>
+                        </div>
+                        <div class="hospital-actions">
+                            <button class="btn btn-primary btn-sm">Get Directions</button>
+                            <button class="btn btn-outline btn-sm">Call</button>
+                        </div>
+                    </div>
+                    <div class="hospital-card">
+                        <div class="hospital-info">
+                            <h4>LNJP Hospital</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> Jawaharlal Nehru Marg, Delhi</p>
+                            <p><i class="fas fa-phone"></i> 011-2323-6000</p>
+                            <p><i class="fas fa-road"></i> 7 km away</p>
+                        </div>
+                        <div class="hospital-status">
+                            <div class="status-item">
+                                <span class="status-label">Emergency:</span>
+                                <span class="status-value available">Open</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">Wait Time:</span>
+                                <span class="status-value">~30 min</span>
+                            </div>
+                        </div>
+                        <div class="hospital-actions">
+                            <button class="btn btn-primary btn-sm">Get Directions</button>
+                            <button class="btn btn-outline btn-sm">Call</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emergency-guide">
+                <h3>Emergency First Aid Guide</h3>
+                <div class="guide-cards">
+                    <div class="guide-card">
+                        <h4>Cardiac Emergency</h4>
+                        <ul>
+                            <li>Call emergency services immediately (108)</li>
+                            <li>Have the person sit down and rest</li>
+                            <li>Loosen any tight clothing</li>
+                            <li>If the person is unconscious, check for breathing and pulse</li>
+                            <li>If trained, begin CPR if there's no pulse</li>
+                        </ul>
+                    </div>
+                    <div class="guide-card">
+                        <h4>Stroke</h4>
+                        <ul>
+                            <li>Remember FAST: Face drooping, Arm weakness, Speech difficulty, Time to call emergency</li>
+                            <li>Note the time when symptoms started</li>
+                            <li>Do not give the person anything to eat or drink</li>
+                            <li>Have the person lie down with head slightly elevated</li>
+                        </ul>
+                    </div>
+                    <div class="guide-card">
+                        <h4>Severe Bleeding</h4>
+                        <ul>
+                            <li>Apply direct pressure to the wound with a clean cloth</li>
+                            <li>If possible, elevate the injured area above the heart</li>
+                            <li>Do not remove the cloth if it becomes soaked; add another on top</li>
+                            <li>Apply a tourniquet only as a last resort</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="emergencyConfirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Emergency Request Submitted</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="confirmation-details">
+                    <div class="confirmation-icon alert">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <p>Your emergency request has been submitted. Help is on the way!</p>
+                    <h4>Emergency ID: <span>E-2025031301</span></h4>
+                    <p><strong>Estimated Response Time:</strong> 10-15 minutes</p>
+                    <p>An ambulance has been dispatched to your location. Please stay on the line for further instructions.</p>
+                </div>
+                <div class="emergency-contact">
+                    <p>For immediate assistance, please call:</p>
+                    <a href="tel:108" class="emergency-phone">
+                        <i class="fas fa-phone"></i> 108
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="languageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select Language</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <button class="language-option selected" data-lang="en">English</button>
+                <button class="language-option" data-lang="hi">हिंदी (Hindi)</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

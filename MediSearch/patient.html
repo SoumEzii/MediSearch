@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - Medi Search</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/placeholder.svg?height=40&width=40" alt="Medi Search Logo">
+                <h1>Medi Search</h1>
+            </div>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="patient.html" class="active">Book Appointment</a></li>
+                    <li><a href="patient.html#queue-status">Queue Status</a></li>
+                    <li><a href="emergency.html" class="emergency-link">Emergency</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-language" id="languageToggle">
+                    <span class="current-lang">EN</span>
+                    <i class="fas fa-globe"></i>
+                </button>
+                <div class="user-profile">
+                    <img src="/placeholder.svg?height=40&width=40" alt="User Avatar" class="avatar">
+                    <span>Rahul Singh</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <aside class="dashboard-sidebar">
+                <nav class="dashboard-nav">
+                    <ul>
+                        <li><a href="#upcoming-appointments" class="active"><i class="fas fa-calendar-alt"></i> Upcoming Appointments</a></li>
+                        <li><a href="#book-appointment"><i class="fas fa-plus-circle"></i> Book New Appointment</a></li>
+                        <li><a href="#queue-status"><i class="fas fa-clock"></i> Queue Status</a></li>
+                        <li><a href="#medical-history"><i class="fas fa-file-medical"></i> Medical History</a></li>
+                        <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="dashboard-content">
+                <section id="upcoming-appointments" class="dashboard-section active">
+                    <h2>Upcoming Appointments</h2>
+                    <div class="appointment-cards">
+                        <div class="appointment-card">
+                            <div class="appointment-status confirmed">Confirmed</div>
+                            <div class="appointment-details">
+                                <h3>Dr. Priya Sharma</h3>
+                                <p class="appointment-specialty">Cardiology</p>
+                                <p class="appointment-hospital">AIIMS Delhi</p>
+                                <p class="appointment-date"><i class="fas fa-calendar"></i> 15 March, 2025</p>
+                                <p class="appointment-time"><i class="fas fa-clock"></i> 10:30 AM</p>
+                                <p class="appointment-token">Token: A-123</p>
+                            </div>
+                            <div class="appointment-actions">
+                                <button class="btn btn-outline">Reschedule</button>
+                                <button class="btn btn-alert">Cancel</button>
+                            </div>
+                        </div>
+
+                        <div class="appointment-card">
+                            <div class="appointment-status waiting">Waiting</div>
+                            <div class="appointment-details">
+                                <h3>Dr. Rajesh Kumar</h3>
+                                <p class="appointment-specialty">General Medicine</p>
+                                <p class="appointment-hospital">Government Hospital, Gurgaon</p>
+                                <p class="appointment-date"><i class="fas fa-calendar"></i> 22 March, 2025</p>
+                                <p class="appointment-time"><i class="fas fa-clock"></i> 2:00 PM</p>
+                                <p class="appointment-token">Token: B-056</p>
+                            </div>
+                            <div class="appointment-actions">
+                                <button class="btn btn-outline">Reschedule</button>
+                                <button class="btn btn-alert">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="book-appointment" class="dashboard-section">
+                    <h2>Book New Appointment</h2>
+                    <div class="appointment-form-container">
+                        <form id="appointmentForm" class="multi-step-form">
+                            <div class="form-step active" data-step="1">
+                                <h3>Step 1: Select Hospital</h3>
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <select id="state" name="state" required>
+                                        <option value="">Select State</option>
+                                        <option value="delhi">Delhi</option>
+                                        <option value="maharashtra">Maharashtra</option>
+                                        <option value="karnataka">Karnataka</option>
+                                        <option value="tamilnadu">Tamil Nadu</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <select id="city" name="city" required>
+                                        <option value="">Select City</option>
+                                        <option value="new-delhi">New Delhi</option>
+                                        <option value="gurgaon">Gurgaon</option>
+                                        <option value="noida">Noida</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hospital">Hospital</label>
+                                    <select id="hospital" name="hospital" required>
+                                        <option value="">Select Hospital</option>
+                                        <option value="aiims">AIIMS Delhi</option>
+                                        <option value="safdarjung">Safdarjung Hospital</option>
+                                        <option value="lnjp">LNJP Hospital</option>
+                                        <option value="rural-dispensary">Rural Dispensary, Najafgarh</option>
+                                    </select>
+                                </div>
+                                <div class="form-buttons">
+                                    <button type="button" class="btn btn-primary next-step">Next</button>
+                                </div>
+                            </div>
+
+                            <div class="form-step" data-step="2">
+                                <h3>Step 2: Select Department & Doctor</h3>
+                                <div class="form-group">
+                                    <label for="department">Department</label>
+                                    <select id="department" name="department" required>
+                                        <option value="">Select Department</option>
+                                        <option value="cardiology">Cardiology</option>
+                                        <option value="orthopedics">Orthopedics</option>
+                                        <option value="neurology">Neurology</option>
+                                        <option value="general-medicine">General Medicine</option>
+                                        <option value="pediatrics">Pediatrics</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="doctor">Doctor</label>
+                                    <select id="doctor" name="doctor" required>
+                                        <option value="">Select Doctor</option>
+                                        <option value="dr-sharma">Dr. Priya Sharma</option>
+                                        <option value="dr-kumar">Dr. Rajesh Kumar</option>
+                                        <option value="dr-singh">Dr. Amit Singh</option>
+                                    </select>
+                                </div>
+                                <div class="doctor-info">
+                                    <img src="/placeholder.svg?height=100&width=100" alt="Doctor Photo" class="doctor-photo">
+                                    <div class="doctor-details">
+                                        <h4>Dr. Priya Sharma</h4>
+                                        <p>Cardiology</p>
+                                        <p>MBBS, MD (Cardiology)</p>
+                                        <p>Experience: 15 years</p>
+                                        <div class="availability">
+                                            <span class="available">Available</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-buttons">
+                                    <button type="button" class="btn btn-outline prev-step">Previous</button>
+                                    <button type="button" class="btn btn-primary next-step">Next</button>
+                                </div>
+                            </div>
+
+                            <div class="form-step" data-step="3">
+                                <h3>Step 3: Select Date & Time</h3>
+                                <div class="form-group">
+                                    <label for="appointment-date">Date</label>
+                                    <input type="date" id="appointment-date" name="appointment-date" required min="2025-03-13">
+                                </div>
+                                <div class="form-group">
+                                    <label>Available Time Slots</label>
+                                    <div class="time-slots">
+                                        <button type="button" class="time-slot">9:00 AM</button>
+                                        <button type="button" class="time-slot">9:30 AM</button>
+                                        <button type="button" class="time-slot">10:00 AM</button>
+                                        <button type="button" class="time-slot">10:30 AM</button>
+                                        <button type="button" class="time-slot">11:00 AM</button>
+                                        <button type="button" class="time-slot">11:30 AM</button>
+                                        <button type="button" class="time-slot">2:00 PM</button>
+                                        <button type="button" class="time-slot">2:30 PM</button>
+                                        <button type="button" class="time-slot">3:00 PM</button>
+                                        <button type="button" class="time-slot">3:30 PM</button>
+                                        <button type="button" class="time-slot">4:00 PM</button>
+                                        <button type="button" class="time-slot">4:30 PM</button>
+                                    </div>
+                                    <input type="hidden" id="selected-time" name="selected-time">
+                                </div>
+                                <div class="form-group">
+                                    <label for="reason">Reason for Visit</label>
+                                    <textarea id="reason" name="reason" rows="3" placeholder="Briefly describe your symptoms or reason for visit"></textarea>
+                                </div>
+                                <div class="form-buttons">
+                                    <button type="button" class="btn btn-outline prev-step">Previous</button>
+                                    <button type="submit" class="btn btn-success">Book Appointment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <section id="queue-status" class="dashboard-section">
+                    <h2>Queue Status</h2>
+                    <div class="queue-cards">
+                        <div class="queue-card">
+                            <div class="queue-header">
+                                <h3>AIIMS Delhi - Cardiology</h3>
+                                <div class="queue-date">15 March, 2025</div>
+                            </div>
+                            <div class="queue-body">
+                                <div class="queue-info">
+                                    <div class="queue-token">
+                                        <span class="token-label">Your Token</span>
+                                        <span class="token-number">A-123</span>
+                                    </div>
+                                    <div class="queue-current">
+                                        <span class="current-label">Current Token</span>
+                                        <span class="current-number">A-119</span>
+                                    </div>
+                                </div>
+                                <div class="queue-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 80%"></div>
+                                    </div>
+                                    <div class="estimated-time">
+                                        <i class="fas fa-clock"></i> Estimated wait time: <span class="wait-time">20 minutes</span>
+                                    </div>
+                                </div>
+                                <div class="queue-status-info">
+                                    <div class="status-item">
+                                        <span class="status-label">Status:</span>
+                                        <span class="status-value waiting">Waiting</span>
+                                    </div>
+                                    <div class="status-item">
+                                        <span class="status-label">Doctor:</span>
+                                        <span class="status-value">Dr. Priya Sharma</span>
+                                    </div>
+                                    <div class="status-item">
+                                        <span class="status-label">Room:</span>
+                                        <span class="status-value">Room 105</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="queue-footer">
+                                <button class="btn btn-outline btn-sm">Refresh Status</button>
+                                <button class="btn btn-primary btn-sm">View Details</button>
+                            </div>
+                        </div>
+
+                        <div class="queue-card">
+                            <div class="queue-header">
+                                <h3>Government Hospital, Gurgaon - General Medicine</h3>
+                                <div class="queue-date">22 March, 2025</div>
+                            </div>
+                            <div class="queue-body">
+                                <div class="queue-info">
+                                    <div class="queue-token">
+                                        <span class="token-label">Your Token</span>
+                                        <span class="token-number">B-056</span>
+                                    </div>
+                                    <div class="queue-current">
+                                        <span class="current-label">Current Token</span>
+                                        <span class="current-number">B-032</span>
+                                    </div>
+                                </div>
+                                <div class="queue-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 40%"></div>
+                                    </div>
+                                    <div class="estimated-time">
+                                        <i class="fas fa-clock"></i> Estimated wait time: <span class="wait-time">60 minutes</span>
+                                    </div>
+                                </div>
+                                <div class="queue-status-info">
+                                    <div class="status-item">
+                                        <span class="status-label">Status:</span>
+                                        <span class="status-value waiting">Waiting</span>
+                                    </div>
+                                    <div class="status-item">
+                                        <span class="status-label">Doctor:</span>
+                                        <span class="status-value">Dr. Rajesh Kumar</span>
+                                    </div>
+                                    <div class="status-item">
+                                        <span class="status-label">Room:</span>
+                                        <span class="status-value">Room 203</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="queue-footer">
+                                <button class="btn btn-outline btn-sm">Refresh Status</button>
+                                <button class="btn btn-primary btn-sm">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="medical-history" class="dashboard-section">
+                    <h2>Medical History</h2>
+                    <p>Your past appointments and medical records will appear here.</p>
+                </section>
+
+                <section id="profile" class="dashboard-section">
+                    <h2>Profile</h2>
+                    <p>Your profile information will appear here.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="appointmentConfirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Appointment Confirmed!</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="confirmation-details">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p>Your appointment has been successfully booked with:</p>
+                    <h4>Dr. Priya Sharma</h4>
+                    <p>Cardiology, AIIMS Delhi</p>
+                    <p><i class="fas fa-calendar"></i> 15 March, 2025</p>
+                    <p><i class="fas fa-clock"></i> 10:30 AM</p>
+                    <p><strong>Token Number:</strong> A-123</p>
+                </div>
+                <div class="confirmation-actions">
+                    <button class="btn btn-primary">Add to Calendar</button>
+                    <button class="btn btn-outline">Print Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="languageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select Language</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <button class="language-option selected" data-lang="en">English</button>
+                <button class="language-option" data-lang="hi">हिंदी (Hindi)</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

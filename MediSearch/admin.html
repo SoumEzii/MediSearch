@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Medi Search</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/placeholder.svg?height=40&width=40" alt="Medi Search Logo">
+                <h1>Medi Search</h1>
+            </div>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="admin.html" class="active">Admin Dashboard</a></li>
+                    <li><a href="emergency.html" class="emergency-link">Emergency</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-language" id="languageToggle">
+                    <span class="current-lang">EN</span>
+                    <i class="fas fa-globe"></i>
+                </button>
+                <div class="user-profile">
+                    <img src="/placeholder.svg?height=40&width=40" alt="Admin Avatar" class="avatar">
+                    <span>Admin</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <aside class="dashboard-sidebar">
+                <nav class="dashboard-nav">
+                    <ul>
+                        <li><a href="#queue-management" class="active"><i class="fas fa-users"></i> Queue Management</a></li>
+                        <li><a href="#doctor-availability"><i class="fas fa-user-md"></i> Doctor Availability</a></li>
+                        <li><a href="#appointment-overview"><i class="fas fa-calendar-check"></i> Appointment Overview</a></li>
+                        <li><a href="#emergency-status"><i class="fas fa-ambulance"></i> Emergency Status</a></li>
+                        <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="dashboard-content">
+                <section id="queue-management" class="dashboard-section active">
+                    <div class="section-header">
+                        <h2>Queue Management</h2>
+                        <div class="section-actions">
+                            <div class="filter-group">
+                                <label for="department-filter">Department:</label>
+                                <select id="department-filter">
+                                    <option value="all">All Departments</option>
+                                    <option value="cardiology">Cardiology</option>
+                                    <option value="orthopedics">Orthopedics</option>
+                                    <option value="neurology">Neurology</option>
+                                    <option value="general-medicine">General Medicine</option>
+                                    <option value="pediatrics">Pediatrics</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="doctor-filter">Doctor:</label>
+                                <select id="doctor-filter">
+                                    <option value="all">All Doctors</option>
+                                    <option value="dr-sharma">Dr. Priya Sharma</option>
+                                    <option value="dr-kumar">Dr. Rajesh Kumar</option>
+                                    <option value="dr-singh">Dr. Amit Singh</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary btn-sm">Refresh</button>
+                        </div>
+                    </div>
+
+                    <div class="queue-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Total Patients</h3>
+                                <p class="stat-value">42</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Average Wait Time</h3>
+                                <p class="stat-value">25 min</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Completed</h3>
+                                <p class="stat-value">18</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>In Consultation</h3>
+                                <p class="stat-value">5</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="queue-table-container">
+                        <table class="queue-table">
+                            <thead>
+                                <tr>
+                                    <th>Token</th>
+                                    <th>Patient Name</th>
+                                    <th>Doctor</th>
+                                    <th>Department</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A-119</td>
+                                    <td>Anita Patel</td>
+                                    <td>Dr. Priya Sharma</td>
+                                    <td>Cardiology</td>
+                                    <td>10:00 AM</td>
+                                    <td><span class="status-badge in-consultation">In Consultation</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-icon" title="Complete"><i class="fas fa-check"></i></button>
+                                            <button class="btn btn-icon btn-alert" title="Cancel"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>A-120</td>
+                                    <td>Vikram Mehta</td>
+                                    <td>Dr. Priya Sharma</td>
+                                    <td>Cardiology</td>
+                                    <td>10:15 AM</td>
+                                    <td><span class="status-badge waiting">Waiting</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-icon" title="Start Consultation"><i class="fas fa-play"></i></button>
+                                            <button class="btn btn-icon btn-alert" title="Cancel"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>A-121</td>
+                                    <td>Sunita Gupta</td>
+                                    <td>Dr. Priya Sharma</td>
+                                    <td>Cardiology</td>
+                                    <td>10:30 AM</td>
+                                    <td><span class="status-badge waiting">Waiting</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-icon" title="Start Consultation"><i class="fas fa-play"></i></button>
+                                            <button class="btn btn-icon btn-alert" title="Cancel"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>A-122</td>
+                                    <td>Arjun Singh</td>
+                                    <td>Dr. Priya Sharma</td>
+                                    <td>Cardiology</td>
+                                    <td>10:45 AM</td>
+                                    <td><span class="status-badge waiting">Waiting</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-icon" title="Start Consultation"><i class="fas fa-play"></i></button>
+                                            <button class="btn btn-icon btn-alert" title="Cancel"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>A-123</td>
+                                    <td>Rahul Singh</td>
+                                    <td>Dr. Priya Sharma</td>
+                                    <td>Cardiology</td>
+                                    <td>11:00 AM</td>
+                                    <td><span class="status-badge waiting">Waiting</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-icon" title="Start Consultation"><i class="fas fa-play"></i></button>
+                                            <button class="btn btn-icon btn-alert" title="Cancel"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="doctor-availability" class="dashboard-section">
+                    <h2>Doctor Availability</h2>
+                    <div class="doctor-availability-cards">
+                        <div class="doctor-card">
+                            <div class="doctor-info">
+                                <img src="/placeholder.svg?height=80&width=80" alt="Doctor Photo" class="doctor-photo">
+                                <div class="doctor-details">
+                                    <h3>Dr. Priya Sharma</h3>
+                                    <p>Cardiology</p>
+                                    <p>AIIMS Delhi</p>
+                                </div>
+                            </div>
+                            <div class="doctor-status">
+                                <div class="status-selector">
+                                    <label for="status-dr-sharma">Status:</label>
+                                    <select id="status-dr-sharma" class="doctor-status-select">
+                                        <option value="available">Available</option>
+                                        <option value="busy">Busy</option>
+                                        <option value="on-break">On Break</option>
+                                        <option value="on-emergency">On Emergency</option>
+                                        <option value="off-duty">Off Duty</option>
+                                    </select>
+                                </div>
+                                <div class="current-patient">
+                                    <p>Current Patient: <span>Anita Patel (A-119)</span></p>
+                                </div>
+                                <div class="queue-count">
+                                    <p>Patients in Queue: <span>4</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="doctor-card">
+                            <div class="doctor-info">
+                                <img src="/placeholder.svg?height=80&width=80" alt="Doctor Photo" class="doctor-photo">
+                                <div class="doctor-details">
+                                    <h3>Dr. Rajesh Kumar</h3>
+                                    <p>General Medicine</p>
+                                    <p>Government Hospital, Gurgaon</p>
+                                </div>
+                            </div>
+                            <div class="doctor-status">
+                                <div class="status-selector">
+                                    <label for="status-dr-kumar">Status:</label>
+                                    <select id="status-dr-kumar" class="doctor-status-select">
+                                        <option value="available">Available</option>
+                                        <option value="busy" selected>Busy</option>
+                                        <option value="on-break">On Break</option>
+                                        <option value="on-emergency">On Emergency</option>
+                                        <option value="off-duty">Off Duty</option>
+                                    </select>
+                                </div>
+                                <div class="current-patient">
+                                    <p>Current Patient: <span>Mohan Verma (B-032)</span></p>
+                                </div>
+                                <div class="queue-count">
+                                    <p>Patients in Queue: <span>24</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="doctor-card">
+                            <div class="doctor-info">
+                                <img src="/placeholder.svg?height=80&width=80" alt="Doctor Photo" class="doctor-photo">
+                                <div class="doctor-details">
+                                    <h3>Dr. Amit Singh</h3>
+                                    <p>Orthopedics</p>
+                                    <p>LNJP Hospital</p>
+                                </div>
+                            </div>
+                            <div class="doctor-status">
+                                <div class="status-selector">
+                                    <label for="status-dr-singh">Status:</label>
+                                    <select id="status-dr-singh" class="doctor-status-select">
+                                        <option value="available">Available</option>
+                                        <option value="busy">Busy</option>
+                                        <option value="on-break">On Break</option>
+                                        <option value="on-emergency" selected>On Emergency</option>
+                                        <option value="off-duty">Off Duty</option>
+                                    </select>
+                                </div>
+                                <div class="current-patient">
+                                    <p>Current Patient: <span>Emergency Case</span></p>
+                                </div>
+                                <div class="queue-count">
+                                    <p>Patients in Queue: <span>12</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="appointment-overview" class="dashboard-section">
+                    <h2>Appointment Overview</h2>
+                    <div class="appointment-overview-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Today's Appointments</h3>
+                                <p class="stat-value">78</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Check-ins</h3>
+                                <p class="stat-value">42</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>No-shows</h3>
+                                <p class="stat-value">5</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-plus"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>New Bookings</h3>
+                                <p class="stat-value">23</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="emergency-status" class="dashboard-section">
+                    <h2>Emergency Status</h2>
+                    <div class="emergency-stats">
+                        <div class="stat-card alert">
+                            <div class="stat-icon">
+                                <i class="fas fa-ambulance"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Active Emergency Cases</h3>
+                                <p class="stat-value">3</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-procedures"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Available ICU Beds</h3>
+                                <p class="stat-value">5</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-ambulance"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Available Ambulances</h3>
+                                <p class="stat-value">2</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="settings" class="dashboard-section">
+                    <h2>Settings</h2>
+                    <p>System settings will appear here.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="languageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select Language</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <button class="language-option selected" data-lang="en">English</button>
+                <button class="language-option" data-lang="hi">हिंदी (Hindi)</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
