@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - Medi Search</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/placeholder.svg?height=40&width=40" alt="Medi Search Logo">
+                <h1>Medi Search</h1>
+            </div>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="doctor.html" class="active">Doctor Dashboard</a></li>
+                    <li><a href="emergency.html" class="emergency-link">Emergency</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-language" id="languageToggle">
+                    <span class="current-lang">EN</span>
+                    <i class="fas fa-globe"></i>
+                </button>
+                <div class="user-profile">
+                    <img src="/placeholder.svg?height=40&width=40" alt="Doctor Avatar" class="avatar">
+                    <span>Dr. Priya Sharma</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <aside class="dashboard-sidebar">
+                <nav class="dashboard-nav">
+                    <ul>
+                        <li><a href="#today-appointments" class="active"><i class="fas fa-calendar-day"></i> Today's Appointments</a></li>
+                        <li><a href="#patient-queue"><i class="fas fa-users"></i> Patient Queue</a></li>
+                        <li><a href="#patient-records"><i class="fas fa-file-medical"></i> Patient Records</a></li>
+                        <li><a href="#availability"><i class="fas fa-clock"></i> My Availability</a></li>
+                        <li><a href="#profile"><i class="fas fa-user-md"></i> Profile</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="dashboard-content">
+                <section id="today-appointments" class="dashboard-section active">
+                    <div class="section-header">
+                        <h2>Today's Appointments</h2>
+                        <div class="section-actions">
+                            <div class="doctor-availability-toggle">
+                                <label for="doctor-status">Status:</label>
+                                <select id="doctor-status" class="doctor-status-select">
+                                    <option value="available">Available</option>
+                                    <option value="busy">Busy</option>
+                                    <option value="on-break">On Break</option>
+                                    <option value="on-emergency">On Emergency</option>
+                                    <option value="off-duty">Off Duty</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary btn-sm">Refresh</button>
+                        </div>
+                    </div>
+
+                    <div class="appointment-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Total Appointments</h3>
+                                <p class="stat-value">15</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Completed</h3>
+                                <p class="stat-value">5</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>In Progress</h3>
+                                <p class="stat-value">1</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Waiting</h3>
+                                <p class="stat-value">9</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="appointment-timeline">
+                        <div class="timeline-header">
+                            <h3>Appointment Schedule</h3>
+                            <p class="current-time">Current Time: <span id="current-time">10:15 AM</span></p>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item completed">
+                                <div class="timeline-time">9:00 AM</div>
+                                <div class="timeline-content">
+                                    <div class="patient-info">
+                                        <h4>Neha Sharma</h4>
+                                        <p>Token: A-116</p>
+                                        <p>Follow-up: Hypertension</p>
+                                    </div>
+                                    <div class="timeline-status">Completed</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item completed">
+                                <div class="timeline-time">9:30 AM</div>
+                                <div class="timeline-content">
+                                    <div class="patient-info">
+                                        <h4>Rajiv Malhotra</h4>
+                                        <p>Token: A-117</p>
+                                        <p>New Patient: Chest Pain</p>
+                                    </div>
+                                    <div class="timeline-status">Completed</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item completed">
+                                <div class="timeline-time">9:45 AM</div>
+                                <div class="timeline-content">
+                                    <div class="patient-info">
+                                        <h4>Meera Patel</h4>
+                                        <p>Token: A-118</p>
+                                        <p>Follow-up: Arrhythmia</p>
+                                    </div>
+                                    <div class="timeline-status">Completed</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item in-progress">
+                                <div class="timeline-time">10:00 AM</div>
+                                <div class="timeline-content">
+                                    <div class="patient-info">
+                                        <h4>Anita Patel</h4>
+                                        <p>Token: A-119</p>
+                                        <p>Follow-up: Coronary Artery Disease</p>
+                                    </div>
+                                    <div class="timeline-status">In Consultation</div>
+                                    <div class="timeline-actions">
+                                        <button class="btn btn-success btn-sm">Complete</button>
+                                        <button class="btn btn-primary btn-sm">Patient Notes</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item current">
+                                <div class="timeline-time">10:15 AM</div>
+                                <div class="timeline-content">
+                                    <div class="patient-info">
+                                        <h4>Vikram Mehta</h4>
+                                        <p>Token: A-120</p>
+                                        <p>New Patient: Shortness of Breath</p>
+                                    </div>
+                                    <div class="timeline-status">Waiting</div>
+                                    <div class="timeline-actions">
+                                        <button class="btn btn-primary btn-sm">Start Consultation</button>
+                                        <button class="btn btn-outline btn-sm">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">10:30 AM</div>
+                                <div class="timeline-content">
+                                    <div class="patient-info">
+                                        <h4>Sunita Gupta</h4>
+                                        <p>Token: A-121</p>
+                                        <p>Follow-up: Valve Replacement</p>
+                                    </div>
+                                    <div class="timeline-status">Scheduled</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">10:45 AM</div>
+                                <div class="timeline-content">
+                                    <div class="patient-info">
+                                        <h4>Arjun Singh</h4>
+                                        <p>Token: A-122</p>
+                                        <p>New Patient: Palpitations</p>
+                                    </div>
+                                    <div class="timeline-status">Scheduled</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">11:00 AM</div>
+                                <div class="timeline-content">
+                                    <div class="patient-info">
+                                        <h4>Rahul Singh</h4>
+                                        <p>Token: A-123</p>
+                                        <p>New Patient: Chest Pain</p>
+                                    </div>
+                                    <div class="timeline-status">Scheduled</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="patient-queue" class="dashboard-section">
+                    <h2>Patient Queue</h2>
+                    <div class="queue-table-container">
+                        <table class="queue-table">
+                            <thead>
+                                <tr>
+                                    <th>Token</th>
+                                    <th>Patient Name</th>
+                                    <th>Time</th>
+                                    <th>Reason</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A-119</td>
+                                    <td>Anita Patel</td>
+                                    <td>10:00 AM</td>
+                                    <td>Follow-up: Coronary Artery Disease</td>
+                                    <td><span class="status-badge in-consultation">In Consultation</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-success btn-sm">Complete</button>
+                                            <button class="btn btn-primary btn-sm">Patient Notes</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>A-120</td>
+                                    <td>Vikram Mehta</td>
+                                    <td>10:15 AM</td>
+                                    <td>New Patient: Shortness of Breath</td>
+                                    <td><span class="status-badge waiting">Waiting</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-primary btn-sm">Start Consultation</button>
+                                            <button class="btn btn-outline btn-sm">View Details</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>A-121</td>
+                                    <td>Sunita Gupta</td>
+                                    <td>10:30 AM</td>
+                                    <td>Follow-up: Valve Replacement</td>
+                                    <td><span class="status-badge scheduled">Scheduled</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-outline btn-sm">View Details</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>A-122</td>
+                                    <td>Arjun Singh</td>
+                                    <td>10:45 AM</td>
+                                    <td>New Patient: Palpitations</td>
+                                    <td><span class="status-badge scheduled">Scheduled</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-outline btn-sm">View Details</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>A-123</td>
+                                    <td>Rahul Singh</td>
+                                    <td>11:00 AM</td>
+                                    <td>New Patient: Chest Pain</td>
+                                    <td><span class="status-badge scheduled">Scheduled</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-outline btn-sm">View Details</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="patient-records" class="dashboard-section">
+                    <h2>Patient Records</h2>
+                    <div class="patient-search">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search patient by name or ID" class="search-input">
+                            <button class="btn btn-primary btn-sm">Search</button>
+                        </div>
+                    </div>
+                    <div class="patient-notes-editor">
+                        <div class="patient-info-header">
+                            <h3>Patient Notes</h3>
+                            <p>Select a patient to view or edit notes</p>
+                        </div>
+                        <div class="patient-notes-form">
+                            <div class="form-group">
+                                <label for="patient-name">Patient Name</label>
+                                <input type="text" id="patient-name" value="Anita Patel" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="patient-id">Patient ID</label>
+                                <input type="text" id="patient-id" value="P-10045" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="visit-date">Visit Date</label>
+                                <input type="text" id="visit-date" value="12 March, 2025" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="diagnosis">Diagnosis</label>
+                                <input type="text" id="diagnosis" value="Coronary Artery Disease">
+                            </div>
+                            <div class="form-group">
+                                <label for="patient-notes">Notes</label>
+                                <textarea id="patient-notes" rows="6">Patient reports improvement in symptoms after starting medication. Blood pressure: 130/85. Heart rate: 72 bpm. ECG shows normal sinus rhythm. Continue current medication regimen. Follow-up in 3 months.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="prescription">Prescription</label>
+                                <textarea id="prescription" rows="4">1. Aspirin 75mg - Once daily
+2. Atorvastatin 20mg - Once daily at night
+3. Metoprolol 25mg - Twice daily</textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-success">Save Notes</button>
+                                <button class="btn btn-outline">Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="availability" class="dashboard-section">
+                    <h2>My Availability</h2>
+                    <div class="availability-calendar">
+                        <div class="calendar-header">
+                            <h3>March 2025</h3>
+                            <div class="calendar-nav">
+                                <button class="btn btn-icon"><i class="fas fa-chevron-left"></i></button>
+                                <button class="btn btn-icon"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-day-header">Sun</div>
+                            <div class="calendar-day-header">Mon</div>
+                            <div class="calendar-day-header">Tue</div>
+                            <div class="calendar-day-header">Wed</div>
+                            <div class="calendar-day-header">Thu</div>
+                            <div class="calendar-day-header">Fri</div>
+                            <div class="calendar-day-header">Sat</div>
+                            
+                            <div class="calendar-day disabled">23</div>
+                            <div class="calendar-day disabled">24</div>
+                            <div class="calendar-day disabled">25</div>
+                            <div class="calendar-day disabled">26</div>
+                            <div class="calendar-day disabled">27</div>
+                            <div class="calendar-day disabled">28</div>
+                            <div class="calendar-day">1</div>
+                            
+                            <div class="calendar-day">2</div>
+                            <div class="calendar-day available">3</div>
+                            <div class="calendar-day available">4</div>
+                            <div class="calendar-day available">5</div>
+                            <div class="calendar-day available">6</div>
+                            <div class="calendar-day available">7</div>
+                            <div class="calendar-day">8</div>
+                            
+                            <div class="calendar-day">9</div>
+                            <div class="calendar-day available">10</div>
+                            <div class="calendar-day available">11</div>
+                            <div class="calendar-day available">12</div>
+                            <div class="calendar-day active today">13</div>
+                            <div class="calendar-day available">14</div>
+                            <div class="calendar-day">15</div>
+                            
+                            <div class="calendar-day">16</div>
+                            <div class="calendar-day available">17</div>
+                            <div class="calendar-day available">18</div>
+                            <div class="calendar-day available">19</div>
+                            <div class="calendar-day available">20</div>
+                            <div class="calendar-day available">21</div>
+                            <div class="calendar-day">22</div>
+                            
+                            <div class="calendar-day">23</div>
+                            <div class="calendar-day available">24</div>
+                            <div class="calendar-day available">25</div>
+                            <div class="calendar-day available">26</div>
+                            <div class="calendar-day available">27</div>
+                            <div class="calendar-day available">28</div>
+                            <div class="calendar-day">29</div>
+                            
+                            <div class="calendar-day">30</div>
+                            <div class="calendar-day available">31</div>
+                            <div class="calendar-day disabled">1</div>
+                            <div class="calendar-day disabled">2</div>
+                            <div class="calendar-day disabled">3</div>
+                            <div class="calendar-day disabled">4</div>
+                            <div class="calendar-day disabled">5</div>
+                        </div>
+                    </div>
+                    <div class="availability-settings">
+                        <h3>Working Hours</h3>
+                        <div class="working-hours-form">
+                            <div class="form-group">
+                                <label for="working-days">Working Days</label>
+                                <div class="day-selector">
+                                    <label class="day-checkbox">
+                                        <input type="checkbox" checked> Mon
+                                    </label>
+                                    <label class="day-checkbox">
+                                        <input type="checkbox" checked> Tue
+                                    </label>
+                                    <label class="day-checkbox">
+                                        <input type="checkbox" checked> Wed
+                                    </label>
+                                    <label class="day-checkbox">
+                                        <input type="checkbox" checked> Thu
+                                    </label>
+                                    <label class="day-checkbox">
+                                        <input type="checkbox" checked> Fri
+                                    </label>
+                                    <label class="day-checkbox">
+                                        <input type="checkbox"> Sat
+                                    </label>
+                                    <label class="day-checkbox">
+                                        <input type="checkbox"> Sun
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Working Hours</label>
+                                <div class="time-range">
+                                    <div class="time-input">
+                                        <label for="start-time">Start Time</label>
+                                        <input type="time" id="start-time" value="09:00">
+                                    </div>
+                                    <div class="time-input">
+                                        <label for="end-time">End Time</label>
+                                        <input type="time" id="end-time" value="17:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointment-duration">Appointment Duration</label>
+                                <select id="appointment-duration">
+                                    <option value="15">15 minutes</option>
+                                    <option value="30" selected>30 minutes</option>
+                                    <option value="45">45 minutes</option>
+                                    <option value="60">60 minutes</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="profile" class="dashboard-section">
+                    <h2>Profile</h2>
+                    <p>Your profile information will appear here.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="patientNotesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Patient Notes</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="patient-info-header">
+                    <h4>Anita Patel</h4>
+                    <p>Patient ID: P-10045</p>
+                </div>
+                <div class="form-group">
+                    <label for="modal-diagnosis">Diagnosis</label>
+                    <input type="text" id="modal-diagnosis" value="Coronary Artery Disease">
+                </div>
+                <div class="form-group">
+                    <label for="modal-notes">Notes</label>
+                    <textarea id="modal-notes" rows="6">Patient reports improvement in symptoms after starting medication. Blood pressure: 130/85. Heart rate: 72 bpm. ECG shows normal sinus rhythm. Continue current medication regimen. Follow-up in 3 months.</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="modal-prescription">Prescription</label>
+                    <textarea id="modal-prescription" rows="4">1. Aspirin 75mg - Once daily
+2. Atorvastatin 20mg - Once daily at night
+3. Metoprolol 25mg - Twice daily</textarea>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-success">Save Notes</button>
+                    <button class="btn btn-outline">Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="languageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select Language</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <button class="language-option selected" data-lang="en">English</button>
+                <button class="language-option" data-lang="hi">हिंदी (Hindi)</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
